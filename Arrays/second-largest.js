@@ -1,102 +1,130 @@
-// Ques 1 - Second Largest Number
-// Given an array Arr of size N, print second largest
-// distinct element from an array.
+// // Ques 1 - Second Largest Number
+// // Given an array Arr of size N, print second largest
+// // distinct element from an array.
 
-// Input: [12, 35, 1, 10, 34, 1]  ----->>>>>  Output: 34
-// Input: [10, 5, 10]             ----->>>>>  Output: 5
+// // Input: [12, 35, 1, 10, 34, 1]  ----->>>>>  Output: 34
+// // Input: [10, 5, 10]             ----->>>>>  Output: 5
 
-// Brute Force Approach
-function secondLargest(arr) {
-    const uniqueArr = Array.from(new Set(arr)); // O(n)
+// // Brute Force Approach
+// function secondLargest(arr) {
+//     const uniqueArr = Array.from(new Set(arr)); // O(n)
 
-    uniqueArr.sort((a, b) => {
-        // O(nlogn)
-        return b - a;
-    });
+//     uniqueArr.sort((a, b) => {
+//         // O(nlogn)
+//         return b - a;
+//     });
 
-    if (uniqueArr.length >= 2) {
-        return uniqueArr[1];
-    } else {
-        return -1;
-    }
-}
+//     if (uniqueArr.length >= 2) {
+//         return uniqueArr[1];
+//     } else {
+//         return -1;
+//     }
+// }
 
-// console.log(secondLargest([10, 5, 10]));
-// Time Complexity -> O(nlogn);
+// // console.log(secondLargest([10, 5, 10]));
+// // Time Complexity -> O(nlogn);
 
-// Optimised Approach
-// [12, 35, 1, 10, 34, 1]
-// secondLargest = 34
-// largest = 35
-function secondLargestOptimised(arr) {
-    let largest = Number.NEGATIVE_INFINITY;
-    let secondLargest = Number.NEGATIVE_INFINITY;
+// // Optimised Approach
+// // [12, 35, 1, 10, 34, 1]
+// // secondLargest = 34
+// // largest = 35
+// function secondLargestOptimised(arr) {
+//     let largest = Number.NEGATIVE_INFINITY;
+//     let secondLargest = Number.NEGATIVE_INFINITY;
 
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > largest) {
-            secondLargest = largest;
-            largest = arr[i];
-        } else if (arr[i] != largest && arr[i] > secondLargest) {
-            secondLargest = arr[i];
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] > largest) {
+//             secondLargest = largest;
+//             largest = arr[i];
+//         } else if (arr[i] != largest && arr[i] > secondLargest) {
+//             secondLargest = arr[i];
+//         }
+//     }
+
+//     return secondLargest;
+// }
+
+// console.log(secondLargestOptimised([10, 5, 10]));
+// // Time Complexity -> O(n);
+// // Space Complexity -> O(1);
+
+
+
+
+// // Ques 1 - Second Largest Number
+// // Given an array Arr of size N, print second largest
+// // distinct element from an array.
+
+// // Input: [12, 35, 1, 10, 34, 1]  ----->>>>>  Output: 34
+// // Input: [10, 5, 10]             ----->>>>>  Output: 5
+
+// // Brute Force Approach
+// function secondLargest(arr) {
+//     const uniqueArr = Array.from(new Set(arr)); // O(n)
+
+//     uniqueArr.sort((a, b) => {
+//         // O(nlogn)
+//         return b - a;
+//     });
+
+//     if (uniqueArr.length >= 2) {
+//         return uniqueArr[1];
+//     } else {
+//         return -1;
+//     }
+// }
+
+// // console.log(secondLargest([10, 5, 10]));
+// // Time Complexity -> O(nlogn);
+
+// // Optimised Approach
+// // [12, 35, 1, 10, 34, 1]
+// // secondLargest = 34
+// // largest = 35
+// function secondLargest(nums) {
+//     let largest = -1 // 56 88
+//     let secondLargest = -1  //-1 74
+
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] > largest) {
+//             secondLargest = largest
+//             largest = nums[i]
+//         } else if (nums[i] != largest && nums[i] > secondLargest) {
+//             secondLargest = nums[i]
+
+//         }
+//     }
+//     return secondLargest
+// }
+
+// console.log(secondLargest([56, 74, 33, 56, 88, 3, 6]));
+// // Time Complexity -> O(n);
+// // Space Complexity -> O(1);
+
+
+
+// function removesDuplicates(nums) {
+//     for (let i = 0; i < nums.length - 1; i++) {
+//         if (nums[i] === nums[i + 1]) {
+//             nums.splice(i + 1, 1)
+//             i--
+//         }
+//     }
+//     return nums
+// }
+// console.log(removesDuplicates([1, 1, 14]));
+
+
+function removesDuplicates(nums) {
+    let j = 0;
+    for (let i = 1; i < nums.length; i++) {
+        if (j !== nums[i]) {
+            j++
+            nums[j] = nums[i]
         }
     }
+    return j + 1
 
-    return secondLargest;
+
 }
-
-console.log(secondLargestOptimised([10, 5, 10]));
-// Time Complexity -> O(n);
-// Space Complexity -> O(1);
-
-
-
-
-// Ques 1 - Second Largest Number
-// Given an array Arr of size N, print second largest
-// distinct element from an array.
-
-// Input: [12, 35, 1, 10, 34, 1]  ----->>>>>  Output: 34
-// Input: [10, 5, 10]             ----->>>>>  Output: 5
-
-// Brute Force Approach
-function secondLargest(arr) {
-    const uniqueArr = Array.from(new Set(arr)); // O(n)
-
-    uniqueArr.sort((a, b) => {
-        // O(nlogn)
-        return b - a;
-    });
-
-    if (uniqueArr.length >= 2) {
-        return uniqueArr[1];
-    } else {
-        return -1;
-    }
-}
-
-// console.log(secondLargest([10, 5, 10]));
-// Time Complexity -> O(nlogn);
-
-// Optimised Approach
-// [12, 35, 1, 10, 34, 1]
-// secondLargest = 34
-// largest = 35
-function secondLargest(nums) {
-    let largest = -1 // 56 88
-    let secondLargest = -1  //-1 74
-
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] > largest) {
-            secondLargest = largest
-            largest = nums[i]
-        } else if (nums[i] != largest && nums[i] > secondLargest) {
-            secondLargest = nums[i]
-
-        }
-    }
-    return secondLargest
-}
-
-console.log(secondLargest([56, 74, 33, 56, 88, 3, 6]));
-// Time Complexity -> O(n);
-// Space Complexity -> O(1);
+console.log(removesDuplicates([1, 1, 14]));
